@@ -7,3 +7,12 @@ texture_1004.png
 texture_1005.png
 texture_1006.png
 arequipa_iglesia_v2.gltf
+*.obj
+*.gltf
+*.obj.mtl
+*.glb
+*.babylon
+*.bin
+*.zip
+*.tar
+*.gz
