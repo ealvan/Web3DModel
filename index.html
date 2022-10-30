@@ -93,13 +93,26 @@
                 // scene.activeCamera.alpha += Math.PI;
                 scene.getMeshByID("__root__").position = new BABYLON.Vector3(6, 1, 1);
 
+                // var dude = meshes[0];
+                // dude.rotationQuaternion = undefined;
+                // dude.position = new BABYLON.Vector3(0, 0, -80);
+
+                // //scene.beginAnimation(skeletons[0], 0, 100, true, 1.0);
+
+                // scene.createDefaultCamera(1,1,1);
+
+
+                // scene.beforeRender = () => {
+                //     dude.rotation.y += 0.01;
+                // };
             });
 
 
             // // This creates and positions a free camera (non-mesh)
             // var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
-            var camera = new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, new BABYLON.Vector3.Zero(), scene);
+            var camera = new BABYLON.ArcRotateCamera("Camera", -Math.PI / 2, Math.PI / 2, 12, BABYLON.Vector3.Zero(), scene);
 
+            //new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, new BABYLON.Vector3.Zero(), scene);
             // //Creation of 3 boxs and 2 spheres
             // var box1 = BABYLON.Mesh.CreateBox("Box1", 6.0, scene);
             // var box2 = BABYLON.Mesh.CreateBox("Box2", 6.0, scene);
