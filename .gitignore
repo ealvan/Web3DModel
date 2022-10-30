@@ -1,2 +1,11 @@
 texturedMesh.obj
 texturedMesh.obj.mtl
+*.obj
+*.gltf
+*.obj.mtl
+*.glb
+*.babylon
+*.bin
+*.zip
+*.tar
+*.gz
