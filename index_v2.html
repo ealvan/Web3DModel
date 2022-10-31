@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Imports a model-viewer JavaScript code -->
+        <!--It helps to handle how the 3D Object would be displayed -->
+        <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+        <script nomodule src="https://unpkg.com/@google/model-viewer/dist/model-viewer-legacy.js"></script>    
+        <style>
+            #aSide {
+                height: 800px;
+                width: 800px;
+                /* position: absolute; */
+                top: calc(50% - 250px);
+                margin-left: auto;
+                margin-right: auto;
+                /* right: 7%; */
+                background-color: black;
+            }
+            #aSide model-viewer {
+                height: 700px;
+                width: 700px;
+                position: relative;
+                margin-left: auto;
+                margin-right: auto;
+                top: 0;
+                left: 0;
+                border: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="aSide">
+            <!-- 3D objsect -->
+            <!-- This inserts the 3D object inside the aside container -->
+            <model-viewer src="arequipa_iglesia_v2.gltf" alt="IGLESIA DE" auto-rotate camera-controls ar ios-src="arequipa_iglesia_v2.gltf">
+            </model-viewer>
+        </div>
+    </body>
+</html>
