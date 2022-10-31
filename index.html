@@ -146,10 +146,10 @@
                 }
             );
             
-             var building = BABYLON.SceneLoader.Append("./","arequipa_iglesia_v2.gltf", scene, function(meshes){
+             var building = BABYLON.SceneLoader.Append("./","texturedMesh.gltf", scene, function(meshes){
                 scene.createDefaultCameraOrLight(true,true,true);
                 // scene.activeCamera.alpha += Math.PI;
-                scene.getMeshByID("__root__").position = new BABYLON.Vector3(1, 0.5, 1);
+                scene.getMeshByID("__root__").position = new BABYLON.Vector3(0.2, 0.2, 0.2);
 
                 // var dude = meshes[0];
                 // dude.rotationQuaternion = undefined;
