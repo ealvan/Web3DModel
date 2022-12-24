@@ -109,8 +109,21 @@
     
     
     <script>
+
+        /**
+         * @module API
+         * @author Jeampier Anderson
+        */
+
+        /** @var {HTMLElement} canvas */
+        
         var canvas = document.getElementById("renderCanvas");
 
+        /** 
+         * @author Jeampier Anderson
+         * @var {engine} engine 
+         * @var {canvas} canvas 
+         * */
         var startRenderLoop = function (engine, canvas) {
             engine.runRenderLoop(function () {
                 if (sceneToRender && sceneToRender.activeCamera) {
@@ -119,9 +132,12 @@
             });
         }
 
+        /** @var {engine} engine */
         var engine = null;
+        
         var scene = null;
         var sceneToRender = null;
+
         var createDefaultEngine = function() { 
             return new BABYLON.Engine(
                 canvas, 
@@ -135,7 +151,7 @@
         };
         
         var createScene = function () {
-            // This creates a basic Babylon Scene object (non-mesh)
+
             var scene = new BABYLON.Scene(engine);
             
             var environment = scene.createDefaultEnvironment({
@@ -143,7 +159,6 @@
                 groundYBias: 1
             });
 
-            //Enable VR
             var vrHelper = scene.createDefaultVRExperience(
                 {
                     createDeviceOrientationCamera: false
@@ -154,84 +169,13 @@
                     floorMeshes: [environment.ground]
                 }
             );
-            
-             var building = BABYLON.SceneLoader.Append("./","arequipa_iglesia_v2.gltf", scene, function(meshes){
+
+            var building = BABYLON.SceneLoader.Append("./","catedralarequipa.gltf", scene, function(meshes){
                 scene.createDefaultCameraOrLight(true,true,true);
-                // scene.activeCamera.alpha += Math.PI;
                 scene.getMeshByID("__root__").position = new BABYLON.Vector3(0.2, 0.2, 0.2);
-
-                // var dude = meshes[0];
-                // dude.rotationQuaternion = undefined;
-                // dude.position = new BABYLON.Vector3(0, 0, -80);
-
-                // //scene.beginAnimation(skeletons[0], 0, 100, true, 1.0);
-
-                // scene.createDefaultCamera(1,1,1);
-
-
-                // scene.beforeRender = () => {
-                //     dude.rotation.y += 0.01;
-                // };
             });
 
-
-            // // This creates and positions a free camera (non-mesh)
-            // var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 5, -10), scene);
             var camera = new BABYLON.ArcRotateCamera("Camera", -Math.PI / 2, Math.PI / 2, 12, BABYLON.Vector3.Zero(), scene);
-
-            //new BABYLON.ArcRotateCamera("Camera", 0, 0.8, 100, new BABYLON.Vector3.Zero(), scene);
-            // //Creation of 3 boxs and 2 spheres
-            // var box1 = BABYLON.Mesh.CreateBox("Box1", 6.0, scene);
-            // var box2 = BABYLON.Mesh.CreateBox("Box2", 6.0, scene);
-            // var box3 = BABYLON.Mesh.CreateBox("Box3", 6.0, scene);
-
-            // box1.position = new BABYLON.Vector3(-20,0,0);
-            // box2.position.x = -10; // same as: box2.position = new BABYLON.Vector3(-20,0,0);
-            // box3.position.x = 0;
-
-            // //Rotate the box around the x axis
-            // box1.rotation.x = Math.PI/4; // or box1.rotation = new BABYLON.Vector3(Math.PI/4,0,0);
-
-            // //Rotate the box around the y axis
-            // box2.rotation.y = Math.PI/6;
-
-            // // This targets the camera to scene origin
-            // camera.setTarget(BABYLON.Vector3.Zero());
-
-            // // This attaches the camera to the canvas
-            // camera.attachControl(canvas, true);
-
-            // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
-            // var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0), scene);
-
-            // Default intensity is 1. Let's dim the light a small amount
-            // light.intensity = 0.7;
-
-            // Our built-in 'ground' shape.
-            // var ground = BABYLON.MeshBuilder.CreateGround("ground", {width: 6, height: 6}, scene);
-            // let groundMaterial = new BABYLON.StandardMaterial("Ground Material", scene);
-            // ground.material = groundMaterial;
-            // let groundTexture = new BABYLON.Texture(Assets.textures.checkerboard_basecolor_png.rootUrl, scene);
-            // ground.material.diffuseTexture = groundTexture;
-
-            // BABYLON.SceneLoader.ImportMesh(
-            //     "", 
-            //     Assets.meshes.Yeti.rootUrl, 
-            //     Assets.meshes.Yeti.filename, 
-            //     scene, 
-            //     function(newMeshes){
-            //         newMeshes[0].scaling = new BABYLON.Vector3(0.1, 0.1, 0.1);
-            //     }
-            // );
-            
-            // BABYLON.SceneLoader.Append("./", "texturedMesh.obj", scene, function (scene) {
-            //     // do something with the scene
-            //     // scene.create
-            // });        
-            // BABYLON.SceneLoader.Load("./", "texturedMesh.obj", engine, function (scene) { 
-            //     // do something with the scene
-
-            // });
 
             return scene;
         };
@@ -259,7 +203,6 @@
             }
         );
 
-        // Resize
         window.addEventListener("resize", function () {
             engine.resize();
         });
